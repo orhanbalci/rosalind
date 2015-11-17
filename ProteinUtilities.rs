@@ -55,3 +55,47 @@ pub fn read_file_into_string(file_name : &'static str, file_content :&mut String
         Ok(_) => {}//println!("File contains {}",file_content),
     };
 }
+
+pub fn read_fasta(file_name : &'static str)-> Vec<String> {
+    let mut s = String::new();
+    read_file_into_string(file_name, &mut s);
+    let mut raw_lines : Vec<&str> = s.split("\r\n").collect();
+    //  println!("lines {:?}", raw_lines);
+    // lines.retain(|&x| !x.starts_with(">") && x.len() > 0 );
+    let mut lines : Vec<String> = Vec::new();
+    // println!("lines {:?}", lines);
+    let mut accu_str : String = String::new();
+    for temp in raw_lines.iter() {
+        if !(*temp).starts_with(">"){
+            accu_str.push_str(*temp);
+        }else{
+            if accu_str.len() != 0{
+                lines.push(accu_str);
+                accu_str = String::new();
+            }
+        }
+    }
+
+    if accu_str.len() != 0 {
+        lines.push(accu_str);
+    }
+
+    lines
+}
+
+pub fn complement(dna_string : &str) -> String{
+    dna_string.chars().map(|base| {
+        match base{
+            'A' => 'T',
+            'T' => 'A',
+            'G' => 'C',
+            'C' => 'G',
+            _ => unreachable!()
+        }
+    }).collect::<String>()
+}
+
+pub fn reverse_complement(dna_string : &str) -> String{
+    let reversed = dna_string.chars().rev().collect::<String>();
+    complement(&reversed)
+}
