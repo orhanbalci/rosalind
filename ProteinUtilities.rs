@@ -99,6 +99,27 @@ pub fn read_file_into_string(file_name: &'static str, file_content: &mut String)
     };
 }
 
+pub fn write_string_to_file(file_name: &'static str, content: &str) {
+    let path = Path::new(file_name);
+    let display = path.display();
+
+    // Open a file in write-only mode, returns `io::Result<File>`
+    let mut file = match File::create(&path) {
+        Err(why) => panic!("couldn't create {}: {}", display, Error::description(&why)),
+        Ok(file) => file,
+    };
+
+
+    match file.write_all(content.as_bytes()) {
+        Err(why) => {
+            panic!("couldn't write to {}: {}",
+                   display,
+                   Error::description(&why))
+        }
+        Ok(_) => println!("successfully wrote to {}", display),
+    }
+}
+
 pub fn read_fasta(file_name: &'static str) -> Vec<String> {
     let mut s = String::new();
     read_file_into_string(file_name, &mut s);
