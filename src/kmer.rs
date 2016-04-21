@@ -14,7 +14,7 @@ fn main() {
                               acc.push_str(" ");
                               acc
                           });
-    ProteinUtilities::write_string_to_file(".\\src\\result.txt", result);
+    ProteinUtilities::write_string_to_file(".\\src\\result.txt", &result);
 }
 
 fn compute_kmer_freq(kmer: &Vec<String>, dna: &String) -> Vec<u32> {

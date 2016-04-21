@@ -1,0 +1,60 @@
+[package]
+name = "rosalind"
+version = "0.1.0"
+authors = ["orhanbalci <orhanbalci@gmail.com>"]
+
+[dependencies]
+petgraph="*"
+suffix="*"
+
+[[bin]]
+name = "dag"
+path = "src/dag.rs"
+
+[[bin]]
+name = "grph"
+path = "src/grph.rs"
+
+[[bin]]
+name = "kmer"
+path = "src/kmer.rs"
+
+[[bin]]
+name = "lcsm"
+path = "src/lcsm.rs"
+
+[[bin]]
+name = "lexf"
+path = "src/lexf.rs"
+
+[[bin]]
+name = "lia"
+path = "src/long.rs"
+
+[[bin]]
+name = "long"
+path = "src/long.rs"
+
+[[bin]]
+name = "orf"
+path = "src/orf.rs"
+
+[[bin]]
+name = "prob"
+path = "src/prob.rs"
+
+[[bin]]
+name = "revp"
+path = "src/revp.rs"
+
+[[bin]]
+name = "splc"
+path = "src/splc.rs"
+
+[[bin]]
+name = "tran"
+path = "src/tran.rs"
+
+[[bin]]
+name = "tree"
+path = "src/tree.rs"
