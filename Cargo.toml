@@ -58,3 +58,7 @@ path = "src/tran.rs"
 [[bin]]
 name = "tree"
 path = "src/tree.rs"
+
+[[bin]]
+name = "sset"
+path = "src/sset.rs"
