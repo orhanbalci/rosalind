@@ -1,4 +1,4 @@
-//http://rosalind.info/problems/kmer/
+// http://rosalind.info/problems/kmer/
 mod ProteinUtilities;
 
 fn main() {

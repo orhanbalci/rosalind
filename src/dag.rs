@@ -18,13 +18,13 @@ fn main() {
 
         let mut graph_data = Graph::<String, usize>::new();
         let mut node_index_map = HashMap::<String, NodeIndex>::new();
-        for node in graph.iter().skip(1){
-            //println!("Adding vertex {:?}", node);
-            add_vertex(node,&mut node_index_map, &mut graph_data);
+        for node in graph.iter().skip(1) {
+            // println!("Adding vertex {:?}", node);
+            add_vertex(node, &mut node_index_map, &mut graph_data);
         }
         match is_cyclic_directed(&graph_data) {
             true => print!("-1 "),
-            false => print!("1 ")
+            false => print!("1 "),
         }
 
     }

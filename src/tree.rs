@@ -57,7 +57,7 @@ pub fn read_graph_file(file_name: &'static str, node_count: &mut u32) -> Vec<(St
 
     for temp in raw_lines.iter() {
         let nodes = temp.trim().split(" ").collect::<Vec<&str>>();
-        //println!("{:?}",nodes);
+        // println!("{:?}",nodes);
         match nodes.len() {
             1 => *node_count = nodes[0].parse::<u32>().unwrap(),
             2 => graph.push((nodes[0].to_owned(), nodes[1].to_owned())),

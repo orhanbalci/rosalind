@@ -42,7 +42,7 @@ fn main() {
             // println!("{:?}", longest_substring);
             if temp_longest_string.len() > longest_substring.len() {
                 longest_substring = temp_longest_string.clone();
-                println!("{}:{}","New long found",longest_substring);
+                println!("{}:{}", "New long found", longest_substring);
             }
         }
     }
