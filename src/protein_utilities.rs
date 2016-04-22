@@ -4,10 +4,12 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::path::Path;
 
+#[allow(dead_code)]
 pub struct CodonTable {
     pub codon_table: HashMap<&'static str, &'static str>,
 }
 
+#[allow(dead_code)]
 impl CodonTable {
     pub fn new() -> CodonTable {
         let mut ct = CodonTable { codon_table: HashMap::new() };
@@ -83,6 +85,7 @@ impl CodonTable {
     }
 }
 
+#[allow(dead_code)]
 pub fn read_file_into_string(file_name: &'static str, file_content: &mut String) {
     let path = Path::new(file_name);
     let display = path.display();
@@ -99,6 +102,7 @@ pub fn read_file_into_string(file_name: &'static str, file_content: &mut String)
     };
 }
 
+#[allow(dead_code)]
 pub fn write_string_to_file(file_name: &'static str, content: &str) {
     let path = Path::new(file_name);
     let display = path.display();
@@ -120,6 +124,7 @@ pub fn write_string_to_file(file_name: &'static str, content: &str) {
     }
 }
 
+#[allow(dead_code)]
 pub fn read_fasta(file_name: &'static str) -> Vec<String> {
     let mut s = String::new();
     read_file_into_string(file_name, &mut s);
@@ -147,6 +152,7 @@ pub fn read_fasta(file_name: &'static str) -> Vec<String> {
     lines
 }
 
+#[allow(dead_code)]
 pub fn complement(dna_string: &str) -> String {
     dna_string.chars()
               .map(|base| {
@@ -161,15 +167,18 @@ pub fn complement(dna_string: &str) -> String {
               .collect::<String>()
 }
 
+#[allow(dead_code)]
 pub fn reverse_complement(dna_string: &str) -> String {
     let reversed = dna_string.chars().rev().collect::<String>();
     complement(&reversed)
 }
 
+#[allow(dead_code)]
 pub fn transcibe(dna_string: String) -> String {
     dna_string.replace("T", "U")
 }
 
+#[allow(dead_code)]
 pub fn is_start_codon(rna_codon: &str) -> bool {
     match rna_codon {
         "AUG" => true,
@@ -177,6 +186,7 @@ pub fn is_start_codon(rna_codon: &str) -> bool {
     }
 }
 
+#[allow(dead_code)]
 pub fn is_stop_codon(rna_codon: &str) -> bool {
     match rna_codon {
         "UAG" | "UGA" | "UAA" => true,

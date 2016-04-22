@@ -1,10 +1,10 @@
 // solution to http://rosalind.info/problems/sset
 
-mod ProteinUtilities;
+mod protein_utilities;
 
 fn main() {
     let mut file_content = String::new();
-    ProteinUtilities::read_file_into_string("./data/sset.txt", &mut file_content);
+    protein_utilities::read_file_into_string("./data/sset.txt", &mut file_content);
     let set_size = file_content.trim().parse::<u32>().unwrap();
     println!("{}", compute_subset_size(set_size, 1_000_000));
 }

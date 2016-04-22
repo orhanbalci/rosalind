@@ -1,8 +1,8 @@
 // http://rosalind.info/problems/kmer/
-mod ProteinUtilities;
+mod protein_utilities;
 
 fn main() {
-    let dnas = ProteinUtilities::read_fasta(".\\src\\kmer.txt");
+    let dnas = protein_utilities::read_fasta(".\\src\\kmer.txt");
     let alphabet = ['A', 'C', 'G', 'T'];
     let mut kmers: Vec<String> = Vec::new();
     permute(&alphabet, 4, &mut kmers);
@@ -14,7 +14,7 @@ fn main() {
                               acc.push_str(" ");
                               acc
                           });
-    ProteinUtilities::write_string_to_file(".\\src\\result.txt", &result);
+    protein_utilities::write_string_to_file(".\\src\\result.txt", &result);
 }
 
 fn compute_kmer_freq(kmer: &Vec<String>, dna: &String) -> Vec<u32> {

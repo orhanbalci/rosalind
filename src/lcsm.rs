@@ -5,10 +5,10 @@ use std::collections::HashSet;
 use std::collections::HashMap;
 use suffix::SuffixTable;
 
-mod ProteinUtilities;
+mod protein_utilities;
 
 fn main() {
-    let dnas = ProteinUtilities::read_fasta(".\\src\\lcsm.txt");
+    let dnas = protein_utilities::read_fasta(".\\src\\lcsm.txt");
     let dna_count = dnas.len();
     let mut begin_terminal_character: u32 = 0x30;
     let mut suffix_special_char_count_table: HashMap<String, u32> = HashMap::new();

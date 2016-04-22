@@ -1,5 +1,5 @@
 extern crate petgraph;
-mod ProteinUtilities;
+mod protein_utilities;
 use petgraph::graph::{Graph, NodeIndex};
 use std::collections::HashMap;
 use petgraph::algo::toposort;
@@ -8,7 +8,7 @@ fn main() {
     let mut overlap_graph = petgraph::Graph::<String, usize>::new();
     let mut node_index_map = HashMap::<String, NodeIndex>::new();
 
-    let dnas = ProteinUtilities::read_fasta(".\\src\\long.txt");
+    let dnas = protein_utilities::read_fasta(".\\src\\long.txt");
     for i in 0..dnas.len() {
         for j in i + 1..dnas.len() {
             add_overlapping_vertices(&dnas, i, j, &mut node_index_map, &mut overlap_graph);

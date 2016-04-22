@@ -1,36 +1,36 @@
-mod ProteinUtilities;
+mod protein_utilities;
 
-enum base_type {
-    purine,
-    pyrimidine,
+enum BaseType {
+    Purine,
+    Pyrimidine,
 }
 
-enum point_mutation_type {
-    transition,
-    transversion,
+enum PointMutationType {
+    Transition,
+    Transversion,
 }
 
-fn get_base_type(base: char) -> Option<base_type> {
+fn get_base_type(base: char) -> Option<BaseType> {
     match base {
-        'A' | 'G' => Option::Some(base_type::purine),
-        'C' | 'T' => Option::Some(base_type::pyrimidine),
+        'A' | 'G' => Option::Some(BaseType::Purine),
+        'C' | 'T' => Option::Some(BaseType::Pyrimidine),
         _ => Option::None,
     }
 }
 
-fn get_mutation_type(base_pair: (base_type, base_type)) -> point_mutation_type {
+fn get_mutation_type(base_pair: (BaseType, BaseType)) -> PointMutationType {
     match base_pair {
-        (base_type::purine, base_type::purine) |
-        (base_type::pyrimidine, base_type::pyrimidine) => point_mutation_type::transition,
-        (base_type::purine, base_type::pyrimidine) |
-        (base_type::pyrimidine, base_type::purine) => point_mutation_type::transversion,
+        (BaseType::Purine, BaseType::Purine) |
+        (BaseType::Pyrimidine, BaseType::Pyrimidine) => PointMutationType::Transition,
+        (BaseType::Purine, BaseType::Pyrimidine) |
+        (BaseType::Pyrimidine, BaseType::Purine) => PointMutationType::Transversion,
     }
 }
 
 
 fn main() {
     let mut file_contents = String::new();
-    ProteinUtilities::read_file_into_string("tran.txt", &mut file_contents);
+    protein_utilities::read_file_into_string("tran.txt", &mut file_contents);
     let mut raw_lines: Vec<&str> = file_contents.split("\r\n").collect();
     let mut lines: Vec<String> = Vec::new();
     let mut accu_str: String = String::new();
@@ -53,8 +53,8 @@ fn main() {
         if lines[0].chars().nth(i).unwrap() != lines[1].chars().nth(i).unwrap() {
             match get_mutation_type((get_base_type(lines[0].chars().nth(i).unwrap()).unwrap(),
                                      get_base_type(lines[1].chars().nth(i).unwrap()).unwrap())) {
-                point_mutation_type::transition => mutation_count.0 += 1.0,
-                point_mutation_type::transversion => mutation_count.1 += 1.0,
+                PointMutationType::Transition => mutation_count.0 += 1.0,
+                PointMutationType::Transversion => mutation_count.1 += 1.0,
             }
         }
     }

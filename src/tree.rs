@@ -1,6 +1,6 @@
 //#![feature(plugin)]
 extern crate petgraph;
-mod ProteinUtilities;
+mod protein_utilities;
 use petgraph::graph::{Graph, NodeIndex};
 use std::collections::HashMap;
 use petgraph::algo::connected_components;
@@ -51,7 +51,7 @@ fn add_vertex(vertices: &(String, String),
 
 pub fn read_graph_file(file_name: &'static str, node_count: &mut u32) -> Vec<(String, String)> {
     let mut s = String::new();
-    ProteinUtilities::read_file_into_string(file_name, &mut s);
+    protein_utilities::read_file_into_string(file_name, &mut s);
     let raw_lines: Vec<&str> = s.trim().split("\r\n").collect();
     let mut graph: Vec<(String, String)> = Vec::new();
 

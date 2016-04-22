@@ -1,8 +1,8 @@
-mod ProteinUtilities;
+mod protein_utilities;
 
 fn main() {
     let mut file_content: String = String::new();
-    ProteinUtilities::read_file_into_string("grph.txt", &mut file_content);
+    protein_utilities::read_file_into_string("grph.txt", &mut file_content);
     let raw_lines: Vec<&str> = file_content.split("\r\n").collect();
     let mut lines: Vec<String> = Vec::new();
     let mut accu_str: String = String::new();

@@ -1,9 +1,9 @@
-mod ProteinUtilities;
+mod protein_utilities;
 
 fn main() {
-    let ct = ProteinUtilities::CodonTable::new();
+    let ct = protein_utilities::CodonTable::new();
     let mut file_contents = String::new();
-    ProteinUtilities::read_file_into_string("splc.txt", &mut file_contents);
+    protein_utilities::read_file_into_string("splc.txt", &mut file_contents);
 
     let mut raw_lines: Vec<&str> = file_contents.split("\r\n").collect();
     let mut lines: Vec<String> = Vec::new();
