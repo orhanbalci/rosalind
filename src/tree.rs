@@ -1,4 +1,4 @@
-//#![feature(plugin)]
+// #![feature(plugin)]
 extern crate petgraph;
 mod protein_utilities;
 use petgraph::graph::{Graph, NodeIndex};

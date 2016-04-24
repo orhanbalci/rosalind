@@ -124,11 +124,14 @@ pub fn write_string_to_file(file_name: &'static str, content: &str) {
     }
 }
 
+/// Reads fasta formatted file and returns dns sequences
+///
+/// * `file_name` - fasta file full name including path
 #[allow(dead_code)]
 pub fn read_fasta(file_name: &'static str) -> Vec<String> {
     let mut s = String::new();
     read_file_into_string(file_name, &mut s);
-    let raw_lines: Vec<&str> = s.split("\r\n").collect();
+    let raw_lines: Vec<&str> = s.split("\n").collect();
     //  println!("lines {:?}", raw_lines);
     // lines.retain(|&x| !x.starts_with(">") && x.len() > 0 );
     let mut lines: Vec<String> = Vec::new();
@@ -148,7 +151,6 @@ pub fn read_fasta(file_name: &'static str) -> Vec<String> {
     if !accu_str.is_empty() {
         lines.push(accu_str);
     }
-
     lines
 }
 
