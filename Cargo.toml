@@ -62,6 +62,11 @@ path = "src/tree.rs"
 [[bin]]
 name = "sset"
 path = "src/sset.rs"
+
 [[bin]]
 name = "sseq"
 path = "src/sseq.rs"
+
+[[bin]]
+name = "pdst"
+path = "src/pdst.rs"
