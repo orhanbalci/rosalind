@@ -5,17 +5,17 @@ fn main() {
     let dnas = protein_utilities::read_fasta("./data/pdst.txt");
     let mut matrix_1d = vec![0.0; dnas.len() * dnas.len()];
     let mut row_collection = matrix_1d.chunks_mut(dnas.len()).collect::<Vec<_>>();
-    let mut matrix = row_collection.as_mut_slice();
+    let matrix = row_collection.as_mut_slice();
     dnas.iter()
         .enumerate()
-        .inspect(|index_first_dna| {
+        .inspect(|first_dna| {
             dnas.iter()
-                .skip(index_first_dna.0)
+                .skip(first_dna.0)
                 .enumerate()
-                .inspect(|index2_second_dna| {
-                    let distance = distance(index_first_dna.1, index2_second_dna.1);
-                    matrix[index_first_dna.0][index_first_dna.0 + index2_second_dna.0] = distance;
-                    matrix[index_first_dna.0 + index2_second_dna.0][index_first_dna.0] = distance;
+                .inspect(|second_dna| {
+                    let distance = distance(first_dna.1, second_dna.1);
+                    matrix[first_dna.0][first_dna.0 + second_dna.0] = distance;
+                    matrix[first_dna.0 + second_dna.0][first_dna.0] = distance;
                 })
                 .collect::<Vec<_>>();
         })
@@ -45,4 +45,11 @@ fn pretty_print<T: fmt::Display>(matrix: &mut [&mut [T]]) {
               println!("");
           })
           .collect::<Vec<_>>();
+}
+
+mod test{
+    #[test]
+    fn distance(){
+        assert_eq!(super::distance("orhan","orhak"), 0.2);
+    }
 }
