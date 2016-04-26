@@ -47,9 +47,9 @@ fn pretty_print<T: fmt::Display>(matrix: &mut [&mut [T]]) {
           .collect::<Vec<_>>();
 }
 
-mod test{
+mod test {
     #[test]
-    fn distance(){
-        assert_eq!(super::distance("orhan","orhak"), 0.2);
+    fn distance() {
+        assert_eq!(super::distance("orhan", "orhak"), 0.2);
     }
 }
